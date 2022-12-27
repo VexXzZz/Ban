@@ -1,0 +1,237 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local BanGui = Instance.new("ScreenGui")
+local PlayersScroll = Instance.new("ScrollingFrame")
+local UIListLayout = Instance.new("UIListLayout")
+local Template = Instance.new("Frame")
+local Ban = Instance.new("TextButton")
+local Unban = Instance.new("TextButton")
+local Spectate = Instance.new("TextButton")
+local Note = Instance.new("TextBox")
+local UIListLayout_2 = Instance.new("UIListLayout")
+local BanGui_2 = Instance.new("Frame")
+local PlayerName = Instance.new("TextLabel")
+local JoinServer = Instance.new("TextButton")
+local JoinServerPlayer = Instance.new("TextBox")
+local PERMA = Instance.new("TextButton")
+local UNBAN = Instance.new("TextButton")
+local PERMAID = Instance.new("TextBox")
+local UNBANID = Instance.new("TextBox")
+local FIndPlayerServerID = Instance.new("TextLabel")
+local ScriptHandlers = Instance.new("Folder")
+local BillboardGui = Instance.new("BillboardGui")
+local TextLabel = Instance.new("TextLabel")
+
+--Properties:
+
+BanGui.Name = "BanGui"
+BanGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+BanGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+BanGui.ResetOnSpawn = false
+
+PlayersScroll.Name = "PlayersScroll"
+PlayersScroll.Parent = BanGui
+PlayersScroll.Active = true
+PlayersScroll.BackgroundColor3 = Color3.fromRGB(187, 187, 189)
+PlayersScroll.Position = UDim2.new(0.634331346, 0, 0.203647509, 0)
+PlayersScroll.Size = UDim2.new(0, 550, 0, 380)
+
+UIListLayout.Parent = PlayersScroll
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.Padding = UDim.new(0, 4)
+
+Template.Name = "Template"
+Template.Parent = game.StarterGui.BanGui.PlayersScroll.ListScript
+Template.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Template.Position = UDim2.new(0, 0, 0.147368416, 0)
+Template.Size = UDim2.new(0, 546, 0, 49)
+
+Ban.Name = "Ban"
+Ban.Parent = Template
+Ban.BackgroundColor3 = Color3.fromRGB(223, 74, 42)
+Ban.BorderColor3 = Color3.fromRGB(27, 42, 53)
+Ban.Position = UDim2.new(-0.00867263693, 0, 0, 0)
+Ban.Size = UDim2.new(0, 140, 0, 48)
+Ban.Font = Enum.Font.SourceSans
+Ban.Text = "Player"
+Ban.TextColor3 = Color3.fromRGB(0, 0, 0)
+Ban.TextScaled = true
+Ban.TextSize = 14.000
+Ban.TextWrapped = true
+
+Unban.Name = "Unban"
+Unban.Parent = Template
+Unban.BackgroundColor3 = Color3.fromRGB(52, 134, 87)
+Unban.BorderColor3 = Color3.fromRGB(27, 42, 53)
+Unban.LayoutOrder = 1
+Unban.Position = UDim2.new(0.246402472, 0, 0, 0)
+Unban.Size = UDim2.new(0, 138, 0, 48)
+Unban.Font = Enum.Font.SourceSans
+Unban.Text = "UnBan"
+Unban.TextColor3 = Color3.fromRGB(0, 0, 0)
+Unban.TextSize = 57.000
+Unban.TextWrapped = true
+
+Spectate.Name = "Spectate"
+Spectate.Parent = Template
+Spectate.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Spectate.LayoutOrder = 3
+Spectate.Position = UDim2.new(1.19373083, 0, 0, 0)
+Spectate.Size = UDim2.new(0, 137, 0, 48)
+Spectate.Font = Enum.Font.SourceSans
+Spectate.Text = "Spectate"
+Spectate.TextColor3 = Color3.fromRGB(0, 0, 0)
+Spectate.TextScaled = true
+Spectate.TextSize = 14.000
+Spectate.TextWrapped = true
+
+Note.Name = "Note"
+Note.Parent = Template
+Note.BackgroundColor3 = Color3.fromRGB(189, 188, 191)
+Note.LayoutOrder = 2
+Note.Position = UDim2.new(0.498169154, 0, 0, 0)
+Note.Size = UDim2.new(0, 138, 0, 48)
+Note.Font = Enum.Font.SourceSans
+Note.PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
+Note.PlaceholderText = "Ban/Unban Note Here"
+Note.Text = ""
+Note.TextColor3 = Color3.fromRGB(0, 0, 0)
+Note.TextScaled = true
+Note.TextSize = 24.000
+Note.TextWrapped = true
+
+UIListLayout_2.Parent = Template
+UIListLayout_2.FillDirection = Enum.FillDirection.Horizontal
+UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
+
+BanGui_2.Name = "BanGui"
+BanGui_2.Parent = BanGui
+BanGui_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+BanGui_2.BackgroundTransparency = 1.000
+BanGui_2.Position = UDim2.new(0.633622944, 0, 0.0910139754, 0)
+BanGui_2.Size = UDim2.new(0, 554, 0, 114)
+
+PlayerName.Name = "PlayerName"
+PlayerName.Parent = BanGui_2
+PlayerName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PlayerName.Position = UDim2.new(0.498276919, 0, 0.0263157897, 0)
+PlayerName.Size = UDim2.new(0, 276, 0, 36)
+PlayerName.Font = Enum.Font.SourceSans
+PlayerName.Text = "PlayerName"
+PlayerName.TextColor3 = Color3.fromRGB(0, 0, 0)
+PlayerName.TextScaled = true
+PlayerName.TextSize = 14.000
+PlayerName.TextWrapped = true
+
+JoinServer.Name = "JoinServer"
+JoinServer.Parent = BanGui_2
+JoinServer.BackgroundColor3 = Color3.fromRGB(131, 138, 216)
+JoinServer.BorderColor3 = Color3.fromRGB(27, 42, 53)
+JoinServer.Position = UDim2.new(0.00188691181, 0, 0.339071035, 0)
+JoinServer.Size = UDim2.new(0, 275, 0, 38)
+JoinServer.Font = Enum.Font.SourceSans
+JoinServer.Text = "Join Server"
+JoinServer.TextColor3 = Color3.fromRGB(0, 0, 0)
+JoinServer.TextScaled = true
+JoinServer.TextSize = 14.000
+JoinServer.TextWrapped = true
+
+JoinServerPlayer.Name = "JoinServerPlayer"
+JoinServerPlayer.Parent = BanGui_2
+JoinServerPlayer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+JoinServerPlayer.Position = UDim2.new(0.498276919, 0, 0.339071035, 0)
+JoinServerPlayer.Size = UDim2.new(0, 276, 0, 38)
+JoinServerPlayer.Font = Enum.Font.SourceSans
+JoinServerPlayer.Text = ""
+JoinServerPlayer.TextColor3 = Color3.fromRGB(0, 0, 0)
+JoinServerPlayer.TextScaled = true
+JoinServerPlayer.TextSize = 14.000
+JoinServerPlayer.TextWrapped = true
+
+PERMA.Name = "PERMA"
+PERMA.Parent = BanGui_2
+PERMA.BackgroundColor3 = Color3.fromRGB(230, 95, 94)
+PERMA.Position = UDim2.new(8.18576664e-05, 0, 0.671538472, 0)
+PERMA.Size = UDim2.new(0, 275, 0, 19)
+PERMA.Font = Enum.Font.SourceSans
+PERMA.Text = "PERMA"
+PERMA.TextColor3 = Color3.fromRGB(0, 0, 0)
+PERMA.TextScaled = true
+PERMA.TextSize = 14.000
+PERMA.TextWrapped = true
+
+UNBAN.Name = "UNBAN"
+UNBAN.Parent = BanGui_2
+UNBAN.BackgroundColor3 = Color3.fromRGB(230, 196, 181)
+UNBAN.Position = UDim2.new(0.00188691181, 0, 0.846977115, 0)
+UNBAN.Size = UDim2.new(0, 275, 0, 19)
+UNBAN.Font = Enum.Font.SourceSans
+UNBAN.Text = "UNBAN"
+UNBAN.TextColor3 = Color3.fromRGB(0, 0, 0)
+UNBAN.TextScaled = true
+UNBAN.TextSize = 14.000
+UNBAN.TextWrapped = true
+
+PERMAID.Name = "PERMAID"
+PERMAID.Parent = BanGui_2
+PERMAID.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PERMAID.Position = UDim2.new(0.498276919, 0, 0.675438643, 0)
+PERMAID.Size = UDim2.new(0, 276, 0, 20)
+PERMAID.Font = Enum.Font.SourceSans
+PERMAID.PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
+PERMAID.PlaceholderText = "UserID"
+PERMAID.Text = ""
+PERMAID.TextColor3 = Color3.fromRGB(0, 0, 0)
+PERMAID.TextScaled = true
+PERMAID.TextSize = 14.000
+PERMAID.TextWrapped = true
+
+UNBANID.Name = "UNBANID"
+UNBANID.Parent = BanGui_2
+UNBANID.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+UNBANID.Position = UDim2.new(0.498276919, 0, 0.842105329, 0)
+UNBANID.Size = UDim2.new(0, 276, 0, 20)
+UNBANID.Font = Enum.Font.SourceSans
+UNBANID.PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
+UNBANID.PlaceholderText = "UserID"
+UNBANID.Text = ""
+UNBANID.TextColor3 = Color3.fromRGB(0, 0, 0)
+UNBANID.TextScaled = true
+UNBANID.TextSize = 14.000
+UNBANID.TextWrapped = true
+
+FIndPlayerServerID.Name = "FInd Player Server ID"
+FIndPlayerServerID.Parent = BanGui_2
+FIndPlayerServerID.BackgroundColor3 = Color3.fromRGB(201, 255, 109)
+FIndPlayerServerID.Position = UDim2.new(0.00188702194, 0, 0.0175438598, 0)
+FIndPlayerServerID.Size = UDim2.new(0, 275, 0, 36)
+FIndPlayerServerID.Font = Enum.Font.SourceSans
+FIndPlayerServerID.Text = "Find Player Server ID"
+FIndPlayerServerID.TextColor3 = Color3.fromRGB(0, 0, 0)
+FIndPlayerServerID.TextScaled = true
+FIndPlayerServerID.TextSize = 14.000
+FIndPlayerServerID.TextWrapped = true
+
+ScriptHandlers.Name = "ScriptHandlers"
+ScriptHandlers.Parent = BanGui
+
+BillboardGui.Parent = game.StarterGui.BanGui["Toggle GUI + ESP"]
+BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+BillboardGui.Active = true
+BillboardGui.AlwaysOnTop = true
+BillboardGui.Size = UDim2.new(0, 200, 0, 25)
+
+TextLabel.Parent = BillboardGui
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Size = UDim2.new(1, 0, 1, 0)
+TextLabel.Visible = false
+TextLabel.Font = Enum.Font.SourceSansBold
+TextLabel.Text = "Username"
+TextLabel.TextColor3 = Color3.fromRGB(172, 239, 255)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
